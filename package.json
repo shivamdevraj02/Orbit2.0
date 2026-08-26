@@ -1,0 +1,9 @@
+{
+    "name": "tech-community-site-workspace",
+    "private": true,
+    "scripts": {
+        "dev": "npm --prefix tech-community-site run dev",
+        "build": "npm --prefix tech-community-site run build",
+        "preview": "npm --prefix tech-community-site run preview"
+    }
+}

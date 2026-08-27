@@ -1,7 +1,5 @@
 import React, { useLayoutEffect } from 'react';
 import { Link } from 'react-router-dom';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
   Brain,
   Code2,
@@ -12,8 +10,7 @@ import {
 } from 'lucide-react';
 
 import SectionHeading from '../components/SectionHeading';
-
-gsap.registerPlugin(ScrollTrigger);
+import { gsap, horizontalScroll, revealUp } from '../animations';
 
 const icons = {
   Brain,
@@ -30,30 +27,14 @@ export default function Wings({ data }) {
         const track = document.querySelector('.wings-track');
 
         if (track) {
-          gsap.to(track, {
-            x: () => -(track.scrollWidth - window.innerWidth),
-            ease: 'none',
-            scrollTrigger: {
-              trigger: '.wings-pin',
-              pin: true,
-              scrub: 1,
-              end: () =>
-                '+=' +
-                (track.scrollWidth - window.innerWidth)
-            }
-          });
+          horizontalScroll(track, document.querySelector('.wings-pin'));
         }
       }
 
-      gsap.from('.wing-card', {
+      revealUp(document.querySelectorAll('.wing-card'), {
         y: 60,
-        opacity: 0,
         stagger: 0.1,
-        duration: 0.8,
-        scrollTrigger: {
-          trigger: '.wings-page',
-          start: 'top 70%'
-        }
+        duration: 0.8
       });
     });
 

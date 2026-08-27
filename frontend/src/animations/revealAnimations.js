@@ -1,4 +1,4 @@
-import gsap from 'gsap';
+import { gsap } from './gsapConfig';
 
 export function revealUp(
   elements,

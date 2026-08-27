@@ -1,7 +1,4 @@
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import { gsap } from './gsapConfig';
 
 export function scrollReveal(
   elements,
@@ -14,20 +11,23 @@ export function scrollReveal(
     duration = 0.8,
     stagger = 0.1,
     start = 'top 85%',
-    once = true
+    once = true,
+    blur = 0
   } = options;
 
   return gsap.fromTo(
     elements,
     {
       y,
-      opacity: 0
+      opacity: 0,
+      filter: blur ? `blur(${blur}px)` : 'none'
     },
     {
       y: 0,
       opacity: 1,
       duration,
       stagger,
+      filter: 'blur(0px)',
       ease: 'power3.out',
       scrollTrigger: {
         trigger: elements,
@@ -44,7 +44,8 @@ export function parallax(
     yPercent = -20,
     start = 'top bottom',
     end = 'bottom top',
-    scrub = true
+    scrub = true,
+    trigger = element
   } = {}
 ) {
   if (!element) return null;
@@ -53,7 +54,7 @@ export function parallax(
     yPercent,
     ease: 'none',
     scrollTrigger: {
-      trigger: element,
+      trigger,
       start,
       end,
       scrub

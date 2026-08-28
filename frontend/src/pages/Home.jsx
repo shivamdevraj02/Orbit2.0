@@ -1,65 +1,37 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowDownRight, ArrowUpRight } from 'lucide-react';
-import gsap from 'gsap';
-
 import useGsap from '../hooks/useGsap';
 import SectionHeading from '../components/SectionHeading';
 import MagneticButton from '../components/MagneticButton';
 import ThreeHero from '../components/ThreeHero';
+import {
+  pageEnter,
+  parallax,
+  revealUp,
+  scrollReveal
+} from '../animations';
 
 export default function Home({ data }) {
   const ref = useGsap((g, ST, root) => {
-    // Hero text animation
-    g.fromTo(
-      root.querySelectorAll('.hero-copy>*'),
-      {
-        y: 40,
-        opacity: 0
-      },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        stagger: 0.12,
-        ease: 'power3.out'
-      }
-    );
+    pageEnter(root);
+    revealUp(root.querySelectorAll('.hero-copy>*'), {
+      y: 40,
+      duration: 1,
+      stagger: 0.12
+    });
 
     // Scroll reveal animations
     g.utils.toArray('.reveal').forEach((el) => {
-      g.fromTo(
-        el,
-        {
-          y: 70,
-          opacity: 0,
-          filter: 'blur(8px)'
-        },
-        {
-          y: 0,
-          opacity: 1,
-          filter: 'blur(0px)',
-          duration: 1,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: el,
-            start: 'top 85%',
-            once: true
-          }
-        }
-      );
+      scrollReveal(el, { y: 70, blur: 8, duration: 1 });
     });
 
     // Hero background parallax
-    g.to('.hero-grid', {
+    parallax(root.querySelector('.hero-grid'), {
       yPercent: -18,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.hero',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true
-      }
+      trigger: root.querySelector('.hero'),
+      start: 'top top',
+      end: 'bottom top'
     });
   }, []);
 

@@ -1,10 +1,17 @@
-import React, { useLayoutEffect } from "react";
-import { Link } from "react-router-dom";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Brain, Code2, Binary, Bot, PenTool, ArrowUpRight } from "lucide-react";
+import React, { useLayoutEffect } from 'react';
+import { Link } from 'react-router-dom';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import {
+  Brain,
+  Code2,
+  Binary,
+  Bot,
+  PenTool,
+  ArrowUpRight
+} from 'lucide-react';
 
-import SectionHeading from "../components/SectionHeading";
+import SectionHeading from '../components/SectionHeading';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -25,26 +32,27 @@ export default function Wings({ data }) {
         if (track) {
           gsap.to(track, {
             x: () => -(track.scrollWidth - window.innerWidth),
-            ease: "none",
+            ease: 'none',
             scrollTrigger: {
-              trigger: ".wings-pin",
+              trigger: '.wings-pin',
               pin: true,
               scrub: 1,
-              end: () => "+=" + (track.scrollWidth - window.innerWidth),
-            },
+              end: () =>
+                '+=' +
+                (track.scrollWidth - window.innerWidth)
+            }
           });
         }
       }
 
-      gsap.from(".wing-card", {
+      gsap.from('.wing-card', {
         y: 60,
-        opacity: 0,
         stagger: 0.1,
         duration: 0.8,
         scrollTrigger: {
-          trigger: ".wings-page",
-          start: "top 70%",
-        },
+          trigger: '.wings-page',
+          start: 'top 70%'
+        }
       });
     });
 

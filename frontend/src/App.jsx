@@ -25,6 +25,9 @@ function Shell() {
 
   return (
     <>
+
+
+    
       <CustomCursor />
       <PageTransition />
 
@@ -51,7 +54,7 @@ function Shell() {
         </Routes>
       </main>
 
-      <Footer data={data} />
+        <Footer data={data} />
     </>
   );
 }

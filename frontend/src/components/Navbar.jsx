@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import {
   ChevronDown,
   Menu,
@@ -8,15 +8,15 @@ import {
   Code2,
   Binary,
   Bot,
-  PenTool
-} from 'lucide-react';
+  PenTool,
+} from "lucide-react";
 
 const icons = {
   Brain,
   Code2,
   Binary,
   Bot,
-  PenTool
+  PenTool,
 };
 
 export default function Navbar({ wings }) {
@@ -56,10 +56,9 @@ export default function Navbar({ wings }) {
                   return (
                     <Link
                       key={w.id}
-                      to={`/wings#${w.id}`}
+                      to={w.id === "dev" ? "/wings/dev" : `/wings#${w.id}`}
                     >
                       <I />
-
                       <div>
                         <b>{w.name}</b>
                         <small>{w.accent}</small>
@@ -87,10 +86,7 @@ export default function Navbar({ wings }) {
 
       {open && (
         <div className="mobile-menu">
-          <NavLink
-            to="/"
-            onClick={() => setOpen(false)}
-          >
+          <NavLink to="/" onClick={() => setOpen(false)}>
             Home
           </NavLink>
 
@@ -108,24 +104,15 @@ export default function Navbar({ wings }) {
             ))}
           </details>
 
-          <NavLink
-            to="/resources"
-            onClick={() => setOpen(false)}
-          >
+          <NavLink to="/resources" onClick={() => setOpen(false)}>
             Resources
           </NavLink>
 
-          <NavLink
-            to="/gallery"
-            onClick={() => setOpen(false)}
-          >
+          <NavLink to="/gallery" onClick={() => setOpen(false)}>
             Gallery
           </NavLink>
 
-          <NavLink
-            to="/about"
-            onClick={() => setOpen(false)}
-          >
+          <NavLink to="/about" onClick={() => setOpen(false)}>
             About
           </NavLink>
         </div>

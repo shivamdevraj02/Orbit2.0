@@ -1,17 +1,10 @@
-import React, { useLayoutEffect } from 'react';
-import { Link } from 'react-router-dom';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import {
-  Brain,
-  Code2,
-  Binary,
-  Bot,
-  PenTool,
-  ArrowUpRight
-} from 'lucide-react';
+import React, { useLayoutEffect } from "react";
+import { Link } from "react-router-dom";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Brain, Code2, Binary, Bot, PenTool, ArrowUpRight } from "lucide-react";
 
-import SectionHeading from '../components/SectionHeading';
+import SectionHeading from "../components/SectionHeading";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -20,40 +13,38 @@ const icons = {
   Code2,
   Binary,
   Bot,
-  PenTool
+  PenTool,
 };
 
 export default function Wings({ data }) {
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      if (window.matchMedia('(min-width:900px)').matches) {
-        const track = document.querySelector('.wings-track');
+      if (window.matchMedia("(min-width:900px)").matches) {
+        const track = document.querySelector(".wings-track");
 
         if (track) {
           gsap.to(track, {
             x: () => -(track.scrollWidth - window.innerWidth),
-            ease: 'none',
+            ease: "none",
             scrollTrigger: {
-              trigger: '.wings-pin',
+              trigger: ".wings-pin",
               pin: true,
               scrub: 1,
-              end: () =>
-                '+=' +
-                (track.scrollWidth - window.innerWidth)
-            }
+              end: () => "+=" + (track.scrollWidth - window.innerWidth),
+            },
           });
         }
       }
 
-      gsap.from('.wing-card', {
+      gsap.from(".wing-card", {
         y: 60,
         opacity: 0,
         stagger: 0.1,
         duration: 0.8,
         scrollTrigger: {
-          trigger: '.wings-page',
-          start: 'top 70%'
-        }
+          trigger: ".wings-page",
+          start: "top 70%",
+        },
       });
     });
 
@@ -70,10 +61,7 @@ export default function Wings({ data }) {
           title="EXPLORE YOUR DIRECTION."
         />
 
-        <p>
-          Five focused tracks for people who want to learn
-          by making.
-        </p>
+        <p>Five focused tracks for people who want to learn by making.</p>
       </section>
 
       {/* Wings */}
@@ -83,11 +71,7 @@ export default function Wings({ data }) {
             const Icon = icons[wing.icon] || Code2;
 
             return (
-              <article
-                id={wing.id}
-                className="wing-card"
-                key={wing.id}
-              >
+              <article id={wing.id} className="wing-card" key={wing.id}>
                 <div className="wing-card-top">
                   <span>{wing.number}</span>
                   <Icon />
@@ -102,7 +86,7 @@ export default function Wings({ data }) {
 
                   <Link
                     data-cursor="EXPLORE"
-                    to={`/wings#${wing.id}`}
+                    to={wing.id === "dev" ? "/wings/dev" : `/wings#${wing.id}`}
                   >
                     EXPLORE WING
                     <ArrowUpRight />

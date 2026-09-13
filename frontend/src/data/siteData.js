@@ -28,6 +28,19 @@ export const DEFAULT_DATA = {
     contact: { address: 'Campus of Siwan Engineering College, Mairwa Road, Old Suta Mill Factory, Bhada Khurd, Siwan Pin - 841226', phone: '', email: 'gecsiwan.orbit@gmail.com', mapUrl: 'https://www.google.com/maps?q=Government+Engineering+College,+Siwan&output=embed', mapLink: 'https://www.google.com/maps/place/Government+Engineering+College,+Siwan/@25.6918432,82.8449627,7z/data=!4m6!3m5!1s0x3992ff716c7b37ad:0x5737371d64c4aed1!8m2!3d26.2251907!4d84.3288573!16s%2Fg%2F11j8m_g3ng?entry=ttu&g_ep=EgoyMDI2MDkwOS4wIKXMDSoASAFQAw%3D%3D', LinkedIn: 'https://www.linkedin.com/company/orbit-coding-club/posts/?feedView=all' },
     social: { instagram: '', linkedin: '', github: '', youtube: '' }
 };
+
+    export function getWingPath(id) {
+        const paths = {
+            ai: '/wings/aiml',
+            dev: '/wings/development',
+            dsa: '/wings/dsa',
+            robotics: '/wings/robotics',
+            design: '/wings/graphics-design'
+        };
+
+        return paths[id] || `/wings/${id}`;
+    }
+
 const KEY = 'ORBIT_site_data_v1';
 export function getData() {
     try {

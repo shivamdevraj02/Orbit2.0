@@ -6,7 +6,12 @@ import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
 import PageTransition from './components/PageTransition';
 
+import AiMlWing from './pages/AiMlWing';
 import DevelopmentWing from './pages/DevelopmentWing';
+import DsaWing from './pages/DSAWing';
+import RoboticsWing from './pages/RoboticsWing';
+import GraphicsWing from './pages/GraphicsWing';
+
 import WingPage from './pages/WingPage';
 
 import useSiteData from './hooks/useSiteData';
@@ -43,7 +48,11 @@ function Shell() {
           <Route path="/about" element={<About data={data} />} />
 
           <Route path="/wings/:slug" element={<WingPage />} />
-          <Route path="/wings/dev" element={<DevelopmentWing data={data} />} />
+          <Route path="/wings/aiml" element={<AiMlWing data={data} />} />
+          <Route path="/wings/development" element={<DevelopmentWing data={data} />} />
+          <Route path="/wings/dsa" element={<DsaWing data={data} />} />
+          <Route path="/wings/robotics" element={<RoboticsWing data={data} />} />
+          <Route path="/wings/graphics-design" element={<GraphicsWing data={data} />} />
 
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/*" element={<Admin data={data} />} />

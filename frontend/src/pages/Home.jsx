@@ -11,6 +11,7 @@ import {
   revealUp,
   scrollReveal
 } from '../animations';
+import { getWingPath } from '../data/siteData';
 
 export default function Home({ data }) {
   const ref = useGsap((g, ST, root) => {
@@ -107,7 +108,7 @@ export default function Home({ data }) {
           {data.wings.map((wing) => (
             <Link
               className="mini-wing reveal"
-              to={`/wings/${wing.id}`}
+              to={getWingPath(wing.id)}
               key={wing.id}
             >
               <span>{wing.number}</span>

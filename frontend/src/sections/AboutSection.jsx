@@ -22,8 +22,8 @@ export default function AboutSection({ data }) {
             <div className="contact-block"><Mail /><div><b>EMAIL</b><p>{data.contact.email}</p><a href={`mailto:${data.contact.email}`}>EMAIL NOW <ArrowUpRight /></a></div></div>
           </div>
           <div className="map-box">
-            {data.contact.mapUrl ? <iframe title="Organization location" src={data.contact.mapUrl} loading="lazy" /> : <div className="map-placeholder"><span>MAP / CONFIGURABLE</span><strong>Siwan, Bihar</strong><p>Add a Google Maps/embed URL from Admin.</p></div>}
-            <a className="map-button" href={data.contact.mapUrl || '#'} target={data.contact.mapUrl ? '_blank' : undefined} rel="noreferrer">OPEN IN MAPS <ArrowUpRight /></a>
+            {data.contact.mapUrl ? <iframe title="Organization location" src={data.contact.mapUrl} width="100%" height="400" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" /> : <div className="map-placeholder"><span>MAP / CONFIGURABLE</span><strong>Siwan, Bihar</strong><p>Add a Google Maps/embed URL from Admin.</p></div>}
+            <a className="map-button" href={data.contact.mapLink || '#'} target={data.contact.mapLink ? '_blank' : undefined} rel="noreferrer">OPEN IN MAPS <ArrowUpRight /></a>
           </div>
         </div>
       </section>

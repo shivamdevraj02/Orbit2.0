@@ -14,7 +14,9 @@ export const DEFAULT_DATA = {
     resources: [
         { id: 1, category: 'DSA', title: 'DSA ROADMAP', description: 'Beginner-to-advanced learning path for data structures and algorithms.', date: 'Editable date', type: 'ROADMAP' },
         { id: 2, category: 'AI / ML', title: 'ML STARTER KIT', description: 'A curated frontend-only placeholder for notes, tutorials and learning material.', date: 'Editable date', type: 'NOTES' },
-        { id: 3, category: 'DEVELOPMENT', title: 'WEB BUILD GUIDE', description: 'Practical resources for building modern web experiences.', date: 'Editable date', type: 'GUIDE' }
+        { id: 3, category: 'DEVELOPMENT', title: 'WEB BUILD GUIDE', description: 'Practical resources for building modern web experiences.', date: 'Editable date', type: 'GUIDE' },
+         { id: 4, category: 'ROBOTICS', title: 'ROBOTICS', description: 'The Robotics Wing focuses on designing, building, and programming robots using electronics, mechanical systems, and coding. ', date: 'Editable date', type: 'ROADMAP' },
+          { id: 5, category: 'GRAPHICS DESIGNING', title: 'DESIGN YOUR IDEA', description: 'The Graphics Designing Wing focuses on creating attractive and creative visual content such as posters, banners, logos, social media designs, and event creatives.', date: 'Editable date', type: 'START' }
     ],
     gallery: [
         { id: 1, title: 'Workshop / Event', category: 'EVENTS', description: 'Replace this placeholder with your event image.', image: '' },

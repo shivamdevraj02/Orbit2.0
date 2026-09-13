@@ -7,6 +7,7 @@ import CustomCursor from './components/CustomCursor';
 import PageTransition from './components/PageTransition';
 
 import DevelopmentWing from './pages/DevelopmentWing';
+import WingPage from './pages/WingPage';
 
 import useSiteData from './hooks/useSiteData';
 import useLenis from './hooks/useLenis';
@@ -25,9 +26,6 @@ function Shell() {
 
   return (
     <>
-
-
-    
       <CustomCursor />
       <PageTransition />
 
@@ -40,21 +38,16 @@ function Shell() {
           <Route path="/resources" element={<Resources data={data} />} />
           <Route path="/gallery" element={<Gallery data={data} />} />
           <Route path="/about" element={<About data={data} />} />
+
+          <Route path="/wings/:slug" element={<WingPage />} />
           <Route path="/wings/dev" element={<DevelopmentWing data={data} />} />
 
-          <Route
-            path="/admin/login"
-            element={<AdminLogin />}
-          />
-
-          <Route
-            path="/admin/*"
-            element={<Admin data={data} />}
-          />
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin/*" element={<Admin data={data} />} />
         </Routes>
       </main>
 
-        <Footer data={data} />
+      <Footer data={data} />
     </>
   );
 }

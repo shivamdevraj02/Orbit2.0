@@ -107,7 +107,7 @@ export default function Home({ data }) {
           {data.wings.map((wing) => (
             <Link
               className="mini-wing reveal"
-              to={`/wings#${wing.id}`}
+              to={`/wings/${wing.id}`}
               key={wing.id}
             >
               <span>{wing.number}</span>

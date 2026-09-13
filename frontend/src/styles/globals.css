@@ -335,10 +335,6 @@ a {
     border-left: 1px solid var(--line)
 }
 
-.mini-wing:hover {
-    background: #111
-}
-
 .mini-wing span {
     font: 12px 'DM Mono';
     color: var(--orange)

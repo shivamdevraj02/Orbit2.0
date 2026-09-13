@@ -1,18 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Code2, Sparkles, Terminal, ArrowUpRight, Cpu, Layers, GitMerge } from 'lucide-react';
-import SectionHeading from '../components/SectionHeading';
-import DevTerminal from '../components/dev/DevTerminal';
-import StackBento from '../components/dev/StackBento';
-import DevRoadmap from '../components/dev/DevRoadmap';
-import ProjectShowcase from '../components/dev/ProjectShowcase';
-import useGsap from '../hooks/useGsap';
+import { ArrowUpRight } from 'lucide-react';
+import SectionHeading from '../SectionHeading';
+import WingTerminal from './WingTerminal';
+import WingBento from './WingBento';
+import WingRoadmap from './WingRoadmap';
+import WingShowcase from './WingShowcase';
+import useGsap from '../../hooks/useGsap';
 
-export default function DevelopmentWing({ data }) {
-  const ref = useGsap((g, ST, root) => {
+export default function WingDetailPage({ config }) {
+  const {
+    wingCode,       // "WING 03 // AI_CORE"
+    heroTitle,      // ["EXPLORING", "INTELLIGENT SYSTEMS."]
+    heroLead,
+    terminalLines,  // array of strings for WingTerminal
+    stackItems,     // array for WingBento
+    roadmapSteps,   // array for WingRoadmap
+    projects,       // array for WingShowcase
+    ctaHeading,
+    ctaText,
+  } = config;
+
+  const ref = useGsap((g) => {
     g.from('.dev-hero-text > *', {
       y: 35,
-      opacity: 0, 
+      opacity: 0,
       stagger: 0.1,
       duration: 0.8,
       ease: 'power3.out'
@@ -48,15 +60,13 @@ export default function DevelopmentWing({ data }) {
           <div className="dev-hero-text">
             <div className="status-badge">
               <span className="pulsing-dot" />
-              <span>WING 02 // DEV_CORE</span>
+              <span>{wingCode}</span>
             </div>
             <h1>
-              CRAFTING <br />
-              <span className="accent-text">MODERN SYSTEMS.</span>
+              {heroTitle[0]} <br />
+              <span className="accent-text">{heroTitle[1]}</span>
             </h1>
-            <p className="dev-lead">
-              We design, build, and deploy production-grade web platforms, scalable backend services, and interactive digital experiences.
-            </p>
+            <p className="dev-lead">{heroLead}</p>
             <div className="dev-hero-actions">
               <a href="#projects" className="magnetic-btn">
                 EXPLORE BUILDS <ArrowUpRight size={16} />
@@ -67,7 +77,7 @@ export default function DevelopmentWing({ data }) {
             </div>
           </div>
           <div className="dev-hero-terminal">
-            <DevTerminal />
+            <WingTerminal lines={terminalLines} />
           </div>
         </div>
       </section>
@@ -78,30 +88,30 @@ export default function DevelopmentWing({ data }) {
         <p className="section-subtext">
           Modern frameworks and infrastructure we build with on a daily basis.
         </p>
-        <StackBento />
+        <WingBento items={stackItems} />
       </section>
 
       {/* 3. ROADMAP & CURRICULUM */}
       <section id="roadmap" className="roadmap-section section-cream">
         <SectionHeading eyebrow="02 / CURRICULUM" title="STRUCTURED LEARNING TRACKS." />
         <p className="section-subtext-dark">
-          From fundamental JavaScript and architecture to full-stack microservices and deployment.
+          From fundamentals to advanced real-world application and deployment.
         </p>
-        <DevRoadmap />
+        <WingRoadmap steps={roadmapSteps} />
       </section>
 
       {/* 4. FLAGSHIP BUILDS */}
       <section id="projects" className="projects-section section-black">
         <SectionHeading dark eyebrow="03 / BUILDS" title="SHIPPED PROJECTS & OPEN SOURCE." />
-        <ProjectShowcase />
+        <WingShowcase projects={projects} />
       </section>
 
       {/* 5. CALL TO ACTION */}
       <section className="dev-cta-section section-orange">
         <div className="dev-cta-content">
           <div className="eyebrow">CONTRIBUTE & BUILD</div>
-          <h2>HAVE AN IDEA OR WANT TO CODE WITH US?</h2>
-          <p>Join weekly code sprints, collaborate on repositories, and ship real products.</p>
+          <h2>{ctaHeading}</h2>
+          <p>{ctaText}</p>
           <Link to="/about" className="circle-link">
             JOIN US <ArrowUpRight />
           </Link>

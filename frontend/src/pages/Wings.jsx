@@ -94,7 +94,7 @@ export default function Wings({ data }) {
 
                   <Link
                     data-cursor="EXPLORE"
-                    to={wing.id === "dev" ? "/wings/dev" : `/wings#${wing.id}`}
+                    to={`/wings/${wing.id}`}
                   >
                     EXPLORE WING
                     <ArrowUpRight />

@@ -147,7 +147,12 @@ export default function About({ data }) {
               <iframe
                 title="Organization location"
                 src={data.contact.mapUrl}
+                width="100%"
+                height="400"
+                style={{ border: 0 }}
+                allowFullScreen
                 loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
               />
             ) : (
               <div className="map-placeholder">
@@ -168,17 +173,15 @@ export default function About({ data }) {
 
             <a
               className="map-button"
-              href={
-                data.contact.mapUrl || '#'
-              }
+              href={data.contact.mapLink || '#'}
               target={
-                data.contact.mapUrl
+                data.contact.mapLink
                   ? '_blank'
                   : undefined
               }
               rel="noreferrer"
               onClick={(e) => {
-                if (!data.contact.mapUrl) {
+                if (!data.contact.mapLink) {
                   e.preventDefault();
                 }
               }}

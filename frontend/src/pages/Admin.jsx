@@ -547,6 +547,18 @@ function ListEditor({
             }
           />
 
+          <Input
+            label="Resource URL"
+            value={item.url}
+            onChange={(value) =>
+              updateItem(
+                index,
+                'url',
+                value
+              )
+            }
+          />
+
           <button
             type="button"
             onClick={() =>

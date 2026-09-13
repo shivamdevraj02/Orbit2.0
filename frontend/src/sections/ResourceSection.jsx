@@ -14,7 +14,13 @@ export default function ResourceSection({ resources }) {
             <h3>{item.title}</h3>
             <p>{item.description}</p>
             <span>{item.date}</span>
-            <button>OPEN RESOURCE <ArrowUpRight /></button>
+            <button
+              type="button"
+              onClick={() => item.url && window.open(item.url, '_blank', 'noopener,noreferrer')}
+              disabled={!item.url}
+            >
+              OPEN RESOURCE <ArrowUpRight />
+            </button>
           </article>
         ))}
       </div>

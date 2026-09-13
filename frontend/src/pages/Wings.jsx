@@ -22,6 +22,7 @@ const icons = {
   Bot,
   PenTool,
 };
+import { getWingPath } from '../data/siteData';
 
 export default function Wings({ data }) {
   useLayoutEffect(() => {
@@ -94,7 +95,7 @@ export default function Wings({ data }) {
 
                   <Link
                     data-cursor="EXPLORE"
-                    to={`/wings/${wing.id}`}
+                    to={getWingPath(wing.id)}
                   >
                     EXPLORE WING
                     <ArrowUpRight />

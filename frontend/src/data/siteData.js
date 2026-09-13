@@ -28,6 +28,19 @@ export const DEFAULT_DATA = {
     contact: { address: 'Campus of Siwan Engineering College, Mairwa Road, Old Suta Mill Factory, Bhada Khurd, Siwan Pin - 841226', phone: '', email: 'gecsiwan.techkshitiz@gmail.com', mapUrl: '' },
     social: { instagram: '', linkedin: '', github: '', youtube: '' }
 };
+
+    export function getWingPath(id) {
+        const paths = {
+            ai: '/wings/aiml',
+            dev: '/wings/development',
+            dsa: '/wings/dsa',
+            robotics: '/wings/robotics',
+            design: '/wings/graphics-design'
+        };
+
+        return paths[id] || `/wings/${id}`;
+    }
+
 const KEY = 'ORBIT_site_data_v1';
 export function getData() { try { const v = localStorage.getItem(KEY); return v ? JSON.parse(v) : DEFAULT_DATA } catch { return DEFAULT_DATA } }
 export function saveData(data) { localStorage.setItem(KEY, JSON.stringify(data)); window.dispatchEvent(new Event('site-data-updated')); }

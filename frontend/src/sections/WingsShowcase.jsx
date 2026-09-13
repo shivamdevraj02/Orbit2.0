@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import SectionHeading from '../components/SectionHeading';
+import { getWingPath } from '../data/siteData';
 
 export default function WingsShowcase({ wings }) {
   return (
@@ -9,7 +10,7 @@ export default function WingsShowcase({ wings }) {
       <SectionHeading dark eyebrow="02 / WINGS" title="FIVE DIRECTIONS. ONE COMMUNITY." />
       <div className="mini-wings">
         {wings.map((wing) => (
-          <Link className="mini-wing reveal" to={`/wings/${wing.id}`} key={wing.id}>
+          <Link className="mini-wing reveal" to={getWingPath(wing.id)} key={wing.id}>
             <span>{wing.number}</span>
             <h3>{wing.name}</h3>
             <p>{wing.description}</p>

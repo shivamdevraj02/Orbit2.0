@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
+import { getWingPath } from '../data/siteData';
 
 export default function Footer({ data }) {
   return (
@@ -31,7 +32,7 @@ export default function Footer({ data }) {
         <div className="footer-links">
           <b>WINGS</b>
           {data.wings.map((wing) => (
-            <Link key={wing.id} to={`/wings/${wing.id}`}>{wing.name}</Link>
+            <Link key={wing.id} to={getWingPath(wing.id)}>{wing.name}</Link>
           ))}
         </div>
 

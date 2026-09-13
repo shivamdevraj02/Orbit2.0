@@ -39,13 +39,19 @@ export default function Footer({ data }) {
           <b>CONTACT</b>
           <span>{data.contact.email}</span>
           <span>{data.contact.phone || 'Phone — configurable'}</span>
+          {data.contact.LinkedIn && (
+            <a href={data.contact.LinkedIn} target="_blank" rel="noreferrer">
+              LinkedIn <ArrowUpRight size={14} />
+            </a>
+          )}
           {data.social.linkedin && <a href={data.social.linkedin} target="_blank" rel="noreferrer">LinkedIn <ArrowUpRight size={14} /></a>}
           {data.social.github && <a href={data.social.github} target="_blank" rel="noreferrer">GitHub <ArrowUpRight size={14} /></a>}
+
         </div>
       </div>
 
       <div className="footer-bottom">
-        <span>© {new Date().getFullYear()} TechKshitiz</span>
+        <span>© {new Date().getFullYear()} ORBIT</span>
         <span>Frontend-only community platform</span>
       </div>
     </footer>

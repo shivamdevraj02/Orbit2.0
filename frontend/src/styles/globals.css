@@ -297,6 +297,12 @@ a {
     max-width: 1050px
 }
 
+.section-heading.compact h2 {
+    font-size: clamp(30px, 5vw, 64px);
+    line-height: .9;
+    letter-spacing: -.06em
+}
+
 .section-heading.on-dark h2 {
     color: var(--cream)
 }

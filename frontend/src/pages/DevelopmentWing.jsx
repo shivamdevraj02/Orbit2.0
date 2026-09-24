@@ -78,7 +78,7 @@ export default function DevelopmentWing() {
         <p className="section-subtext">
           Modern frameworks and infrastructure we build with on a daily basis.
         </p>
-        <StackBento />
+        {/* <StackBento /> */}
       </section>
 
       {/* 3. ROADMAP & CURRICULUM */}

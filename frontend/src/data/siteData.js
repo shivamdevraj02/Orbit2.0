@@ -19,7 +19,15 @@ export const DEFAULT_DATA = {
         { id: 5, category: 'GRAPHICS DESIGNING', title: 'DESIGN YOUR IDEA', description: 'The Graphics Designing Wing focuses on creating attractive and creative visual content such as posters, banners, logos, social media designs, and event creatives.', date: 'Editable date', type: 'START', url: 'https://mescindia.org/images/pdf/trainers-guide/participant/Graphic%20Designer%20Participant%20Handbook.pdf' }
     ],
     gallery: [
-        { id: 1, title: 'Workshop / Event', category: 'EVENTS', description: 'Replace this placeholder with your event image.', image: '' },
+        { id: 1, title: 'Event Moment 01', category: 'EVENTS', description: 'Orbit community event.', image: '/images/image1.png' },
+        { id: 5, title: 'Event Moment 02', category: 'EVENTS', description: 'Orbit community event.', image: '/images/image2.png' },
+        { id: 6, title: 'Event Moment 03', category: 'EVENTS', description: 'Orbit community event.', image: '/images/image3.png' },
+        { id: 7, title: 'Event Moment 04', category: 'EVENTS', description: 'Orbit community event.', image: '/images/image4.png' },
+        { id: 8, title: 'Event Moment 05', category: 'EVENTS', description: 'Orbit community event.', image: '/images/image5.png' },
+        { id: 9, title: 'Event Moment 06', category: 'EVENTS', description: 'Orbit community event.', image: '/images/image6.png' },
+        { id: 10, title: 'Event Moment 07', category: 'EVENTS', description: 'Orbit community event.', image: '/images/image7.png' },
+        { id: 11, title: 'Event Moment 08', category: 'EVENTS', description: 'Orbit community event.', image: '/images/image8.png' },
+        { id: 12, title: 'Event Moment 09', category: 'EVENTS', description: 'Orbit community event.', image: '/images/image9.png' },
         { id: 2, title: 'Build Session', category: 'PROJECTS', description: 'Replace this placeholder with your project image.', image: '' },
         { id: 3, title: 'Creative Work', category: 'DESIGN', description: 'Replace this placeholder with your design image.', image: '' },
         { id: 4, title: 'Team Activity', category: 'TEAM', description: 'Replace this placeholder with your team image.', image: '' }
@@ -29,17 +37,17 @@ export const DEFAULT_DATA = {
     social: { instagram: '', linkedin: '', github: '', youtube: '' }
 };
 
-    export function getWingPath(id) {
-        const paths = {
-            ai: '/wings/aiml',
-            dev: '/wings/development',
-            dsa: '/wings/dsa',
-            robotics: '/wings/robotics',
-            design: '/wings/graphics-design'
-        };
+export function getWingPath(id) {
+    const paths = {
+        ai: '/wings/aiml',
+        dev: '/wings/development',
+        dsa: '/wings/dsa',
+        robotics: '/wings/robotics',
+        design: '/wings/graphics-design'
+    };
 
-        return paths[id] || `/wings/${id}`;
-    }
+    return paths[id] || `/wings/${id}`;
+}
 
 const KEY = 'ORBIT_site_data_v1';
 export function getData() {
@@ -48,6 +56,13 @@ export function getData() {
         if (!stored) return DEFAULT_DATA;
         const data = JSON.parse(stored);
         const defaultsById = new Map(DEFAULT_DATA.resources.map((resource) => [resource.id, resource]));
+        const storedGalleryById = new Map((data.gallery || []).map((item) => [item.id, item]));
+        const gallery = DEFAULT_DATA.gallery.map((item) => ({
+            ...item,
+            ...storedGalleryById.get(item.id),
+            image: storedGalleryById.get(item.id)?.image || item.image
+        }));
+        const defaultGalleryIds = new Set(DEFAULT_DATA.gallery.map((item) => item.id));
         return {
             ...data,
             contact: {
@@ -59,7 +74,11 @@ export function getData() {
             resources: data.resources.map((resource) => ({
                 ...defaultsById.get(resource.id),
                 ...resource
-            }))
+            })),
+            gallery: [
+                ...gallery,
+                ...(data.gallery || []).filter((item) => !defaultGalleryIds.has(item.id))
+            ]
         };
     } catch { return DEFAULT_DATA }
 }

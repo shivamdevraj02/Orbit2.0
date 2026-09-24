@@ -5,7 +5,6 @@ import SectionHeading from '../components/SectionHeading';
 import DevTerminal from '../components/dev/DevTerminal';
 import StackBento from '../components/dev/StackBento';
 import DevRoadmap from '../components/dev/DevRoadmap';
-import ProjectShowcase from '../components/dev/ProjectShowcase';
 import useGsap from '../hooks/useGsap';
 
 export default function DevelopmentWing() {
@@ -93,7 +92,6 @@ export default function DevelopmentWing() {
       {/* 4. FLAGSHIP BUILDS */}
       <section id="projects" className="projects-section section-black">
         <SectionHeading dark eyebrow="03 / BUILDS" title="SHIPPED PROJECTS & OPEN SOURCE." />
-        <ProjectShowcase />
       </section>
 
       {/* 5. CALL TO ACTION */}

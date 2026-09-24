@@ -1,15 +1,20 @@
-import { useLayoutEffect, useRef } from 'react';
+import { useRef, useLayoutEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 gsap.registerPlugin(ScrollTrigger);
 
-export default function useGsap(setup, deps = []) {
-    const ref = useRef(null);
-    useLayoutEffect(() => {
-        if (!ref.current) return;
-        const ctx = gsap.context(() => setup(gsap, ScrollTrigger, ref.current), ref);
-        return () => ctx.revert()
-    }, deps);
+export default function useGsap(callback, deps = []) {
+  const ref = useRef(null);
 
-    return ref
+  useLayoutEffect(() => {
+    if (!ref.current) return undefined;
+    const ctx = gsap.context(() => {
+      callback(gsap, ScrollTrigger, ref.current);
+    }, ref);
+    return () => ctx.revert();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, deps);
+
+  return ref;
 }

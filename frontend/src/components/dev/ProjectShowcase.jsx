@@ -1,67 +1,71 @@
 import React from 'react';
-import { Github, Globe, GitPullRequest, Star, ArrowUpRight } from 'lucide-react';
 
-const PROJECTS = [
-  {
-    title: 'Orbit Community Portal',
-    desc: 'Centralized engineering community hub with dynamic event indexing, resources, and real-time dashboard.',
-    tags: ['React', 'GSAP', 'Vite', 'Three.js'],
-    github: 'https://github.com',
-    demo: '#',
-    status: 'PRODUCTION'
-  },
-  {
-    title: 'Reactive Resumé Builder',
-    desc: 'Live ATS-compliant Markdown and JSON-based resumé generator with instant PDF compilation.',
-    tags: ['Tailwind CSS', 'React 19', 'PDF Engine'],
-    github: 'https://github.com',
-    demo: '#',
-    status: 'BETA'
-  },
-  {
-    title: 'Campus Event Gatekeeper',
-    desc: 'Secure QR ticketing and attendee check-in management system built for campus hackathons and fests.',
-    tags: ['Node.js', 'PostgreSQL', 'Express'],
-    github: 'https://github.com',
-    demo: '#',
-    status: 'ACTIVE SPRINT'
-  }
-];
-
+// Renamed in spirit (not in import path, to avoid touching DsaWing's
+// imports) from "project showcase" to a pattern-recognition bento: each
+// card pairs a name + description with a tiny, purpose-built visual motif
+// instead of a generic icon, since the whole point of this section is
+// "recognize the shape of the problem."
 export default function ProjectShowcase() {
   return (
-    <div className="projects-grid">
-      {PROJECTS.map((proj) => (
-        <div className="dev-project-card" key={proj.title}>
-          <div className="card-window-bar">
-            <span className="status-pill">{proj.status}</span>
-            <div className="window-dots">
-              <span />
-              <span />
-              <span />
-            </div>
-          </div>
-          <div className="card-content">
-            <h3>{proj.title}</h3>
-            <p>{proj.desc}</p>
-            <div className="tag-list">
-              {proj.tags.map((t) => (
-                <span key={t} className="tech-badge">
-                  {t}
-                </span>
-              ))}
-            </div>
-            <div className="card-links">
-              <a href={proj.github} target="_blank" rel="noreferrer" className="link-btn">
-                <Github size={14} /> Repository
-              </a>
-              <a href={proj.demo} className="link-btn primary">
-                <Globe size={14} /> Live Demo <ArrowUpRight size={14} />
-              </a>
-            </div>
-          </div>
+    <div className="patterns-bento">
+      <div className="pattern-card">
+        <div className="pattern-visual two-pointer">
+          <span className="pv-line" />
+          <span className="pv-dot" style={{ left: '18%' }} />
+          <span className="pv-dot" style={{ left: '78%' }} />
         </div>
-      ))}
+        <h3>Two Pointers</h3>
+        <p>Converge from both ends to cut an O(n²) scan down to O(n).</p>
+      </div>
+
+      <div className="pattern-card">
+        <div className="pattern-visual sliding-window">
+          {[3, 7, 4, 9, 5, 2, 8].map((h, i) => (
+            <span key={i} className={`pv-bar ${i >= 2 && i <= 4 ? 'active' : ''}`} style={{ height: `${h * 6}px` }} />
+          ))}
+        </div>
+        <h3>Sliding Window</h3>
+        <p>Grow and shrink a range in place instead of recomputing it.</p>
+      </div>
+
+      <div className="pattern-card">
+        <div className="pattern-visual binary-search">
+          <span className="pv-seg full" />
+          <span className="pv-seg half" />
+          <span className="pv-seg quarter" />
+        </div>
+        <h3>Binary Search</h3>
+        <p>Halve the search space — on arrays, and on the answer itself.</p>
+      </div>
+
+      <div className="pattern-card">
+        <div className="pattern-visual backtracking">
+          <svg viewBox="0 0 80 50"><path d="M40 5 L15 25 M40 5 L65 25 M15 25 L5 45 M15 25 L25 45 M65 25 L55 45 M65 25 L75 45" stroke="#FF5B2E" strokeWidth="1.5" fill="none" /></svg>
+        </div>
+        <h3>Backtracking</h3>
+        <p>Explore, and undo the moment a branch stops being promising.</p>
+      </div>
+
+      <div className="pattern-card">
+        <div className="pattern-visual dp-grid">
+          {Array.from({ length: 16 }).map((_, i) => (
+            <span key={i} className={i % 5 === 0 ? 'lit' : ''} />
+          ))}
+        </div>
+        <h3>Dynamic Programming</h3>
+        <p>Cache subproblem answers so you never solve the same one twice.</p>
+      </div>
+
+      <div className="pattern-card">
+        <div className="pattern-visual greedy">
+          <span className="pv-step" style={{ height: '20%' }} />
+          <span className="pv-step" style={{ height: '45%' }} />
+          <span className="pv-step" style={{ height: '70%' }} />
+          <span className="pv-step active" style={{ height: '95%' }} />
+        </div>
+        <h3>Greedy</h3>
+        <p>Take the locally optimal choice — when it's provably safe to.</p>
+      </div>
     </div>
   );
 }

@@ -1,172 +1,214 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Code2, Sparkles, Terminal, ArrowUpRight, Cpu, Layers, GitMerge } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import SectionHeading from '../components/SectionHeading';
 import DevTerminal from '../components/dev/DevTerminal';
 import StackBento from '../components/dev/StackBento';
 import DevRoadmap from '../components/dev/DevRoadmap';
 import ProjectShowcase from '../components/dev/ProjectShowcase';
+import ComplexitySection from '../components/dev/ComplexitySection';
+import PracticeWorkflow from '../components/dev/PracticeWorkflow';
+import CommunitySection from '../components/dev/CommunitySection';
+import ToolsStrip from '../components/dev/ToolsStrip';
+import NodeGraph from '../components/dev/NodeGraph';
 import useGsap from '../hooks/useGsap';
+import '../styles/dsa-wing.css';
 
-export default function DsaWing({ data }) {
-  const ref = useGsap((g, ST, root) => {
+export default function DsaWing() {
+  const ref = useGsap((g) => {
     g.from('.dev-hero-text > *', {
       y: 35,
       opacity: 0,
       stagger: 0.1,
       duration: 0.8,
-      ease: 'power3.out'
+      ease: 'power3.out',
     });
 
-    g.from('.bento-card', {
+    g.from('.stack-bento .bento-card', {
       y: 50,
       opacity: 0,
       stagger: 0.12,
-      scrollTrigger: {
-        trigger: '.stack-section',
-        start: 'top 75%'
-      }
+      immediateRender: false,
+      scrollTrigger: { trigger: '.stack-section', start: 'top 75%' },
     });
 
-    g.from('.dev-project-card', {
+    g.from('.roadmap-stepper .stepper-item', {
+      x: -24,
+      opacity: 0,
+      stagger: 0.12,
+      scrollTrigger: { trigger: '.roadmap-section', start: 'top 70%' },
+    });
+
+    g.from('.pattern-card', {
       y: 45,
       opacity: 0,
+      stagger: 0.1,
+      scrollTrigger: { trigger: '.patterns-section', start: 'top 75%' },
+    });
+
+    g.from('.complexity-chip-card', {
+      y: 30,
+      opacity: 0,
+      stagger: 0.08,
+      scrollTrigger: { trigger: '.complexity-section', start: 'top 78%' },
+    });
+
+    g.from('.workflow-card', {
+      y: 30,
+      opacity: 0,
       stagger: 0.15,
-      scrollTrigger: {
-        trigger: '.projects-section',
-        start: 'top 75%'
-      }
+      scrollTrigger: { trigger: '.practice-section', start: 'top 75%' },
+    });
+
+    g.from('.community-tile', {
+      y: 30,
+      opacity: 0,
+      stagger: 0.08,
+      scrollTrigger: { trigger: '.community-section', start: 'top 78%' },
     });
   }, []);
 
-return (
-  <div ref={ref} className="dev-wing-page">
+  return (
+    <div ref={ref} className="dev-wing-page">
 
-    {/* 1. HERO SECTION */}
-    <section className="dev-hero section-black">
-      <div className="dev-hero-grid" />
+      {/* 1. HERO SECTION */}
+      <section className="dev-hero section-black">
+        <div className="dev-hero-grid" />
+        <NodeGraph />
 
-      <div className="dev-hero-container">
-        <div className="dev-hero-text">
+        <div className="dev-hero-container">
+          <div className="dev-hero-text">
+            <div className="status-badge">
+              <span className="pulsing-dot" />
+              <span>WING 03 // DSA</span>
+            </div>
 
-          <div className="status-badge">
-            <span className="pulsing-dot" />
-            <span>WING 03 // DSA</span>
+            <h1>
+              MASTER THE ART OF <br />
+              <span className="accent-text">PROBLEM SOLVING.</span>
+            </h1>
+
+            <p className="dev-lead">
+              Build strong problem-solving skills through data structures,
+              algorithms, complexity analysis, and consistent competitive
+              programming practice.
+            </p>
+
+            <div className="dev-hero-actions">
+              <a href="#topics" className="magnetic-btn">
+                EXPLORE DSA <ArrowUpRight size={16} />
+              </a>
+              <a href="#roadmap" className="ghost-btn">
+                START LEARNING
+              </a>
+            </div>
           </div>
 
-          <h1>
-            MASTERING <br />
-            <span className="accent-text">DATA STRUCTURES.</span>
-          </h1>
-
-          <p className="dev-lead">
-            Build strong problem-solving skills through data structures,
-            algorithms, complexity analysis, and consistent competitive
-            programming practice.
-          </p>
-
-          <div className="dev-hero-actions">
-            <a href="#topics" className="magnetic-btn">
-              EXPLORE DSA <ArrowUpRight size={16} />
-            </a>
-
-            <a href="#roadmap" className="ghost-btn">
-              DSA ROADMAP
-            </a>
+          <div className="dev-hero-terminal">
+            <DevTerminal />
           </div>
-
         </div>
+      </section>
 
-        <div className="dev-hero-terminal">
-          <DevTerminal />
-        </div>
-      </div>
-    </section>
-
-
-    {/* 2. DSA CORE TOPICS */}
-    <section id="topics" className="stack-section section-black">
-
-      <SectionHeading
-        dark
-        eyebrow="01 / FUNDAMENTALS"
-        title="DATA STRUCTURES & ALGORITHMS."
-      />
-
-      <p className="section-subtext">
-        Learn the core concepts required to solve problems efficiently
-        and build a strong foundation for technical interviews.
-      </p>
-
-      <StackBento />
-
-    </section>
-
-
-    {/* 3. DSA ROADMAP */}
-    <section id="roadmap" className="roadmap-section section-cream">
-
-      <SectionHeading
-        eyebrow="02 / ROADMAP"
-        title="STRUCTURED DSA LEARNING."
-      />
-
-      <p className="section-subtext-dark">
-        Follow a structured path from programming fundamentals and
-        complexity analysis to advanced algorithms and problem solving.
-      </p>
-
-      <DevRoadmap />
-
-    </section>
-
-
-    {/* 4. PROBLEM SOLVING / PRACTICE */}
-    <section id="projects" className="projects-section section-black">
-
-      <SectionHeading
-        dark
-        eyebrow="03 / PROBLEM SOLVING"
-        title="SOLVE. ANALYZE. OPTIMIZE."
-      />
-
-      <p className="section-subtext">
-        Practice real coding problems, identify patterns, analyze
-        complexity, and continuously improve your solutions.
-      </p>
-
-      <ProjectShowcase />
-
-    </section>
-
-
-    {/* 5. CALL TO ACTION */}
-    <section className="dev-cta-section section-orange">
-
-      <div className="dev-cta-content">
-
-        <div className="eyebrow">
-          THINK & SOLVE
-        </div>
-
-        <h2>
-          READY TO SOLVE HARDER PROBLEMS?
-        </h2>
-
-        <p>
-          Practice consistently, master algorithmic patterns, and build
-          the problem-solving skills needed for coding interviews.
+      {/* 2. DSA CORE TOPICS */}
+      <section id="topics" className="stack-section section-black">
+        <SectionHeading
+          dark
+          eyebrow="01 / FUNDAMENTALS"
+          title="THE CORE OF COMPUTATIONAL THINKING."
+        />
+        <p className="section-subtext">
+          Explore essential data structures and algorithms that form the
+          foundation of efficient and scalable systems.
         </p>
+        <StackBento />
+      </section>
 
-        <Link to="/about" className="circle-link">
-          START LEARNING <ArrowUpRight />
-        </Link>
+      {/* 3. DSA ROADMAP */}
+      <section id="roadmap" className="roadmap-section section-cream">
+        <SectionHeading
+          eyebrow="02 / ROADMAP"
+          title="YOUR JOURNEY TO MASTERY."
+        />
+        <p className="section-subtext-dark">
+          A structured path from foundations to advanced problem solving.
+        </p>
+        <DevRoadmap />
+      </section>
 
-      </div>
+      {/* 4. PATTERN RECOGNITION */}
+      <section id="patterns" className="patterns-section section-black">
+        <SectionHeading
+          dark
+          eyebrow="03 / PATTERNS"
+          title="LEARN THE PATTERNS BEHIND THE PROBLEMS."
+        />
+        <p className="section-subtext">
+          Recognize common patterns, spot repeated structures, and solve
+          problems more efficiently.
+        </p>
+        <ProjectShowcase />
+      </section>
 
-    </section>
+      {/* 5. TIME & SPACE COMPLEXITY */}
+      <section id="complexity" className="complexity-section section-black">
+        <SectionHeading
+          dark
+          eyebrow="04 / COMPLEXITY"
+          title="THINK IN TIME & SPACE."
+        />
+        <p className="section-subtext">
+          We don't just aim for correctness — we understand the "why"
+          behind every solution.
+        </p>
+        <ComplexitySection />
+      </section>
 
-  </div>
-);
+      {/* 6. PRACTICE WORKFLOW */}
+      <section id="practice" className="practice-section section-cream">
+        <SectionHeading
+          eyebrow="05 / PRACTICE"
+          title="FROM PROBLEM TO SOLUTION TO OPTIMIZATION."
+        />
+        <p className="section-subtext-dark">
+          Every problem you solve here follows the same disciplined loop —
+          on purpose.
+        </p>
+        <PracticeWorkflow />
+      </section>
 
+      {/* 7. COMMUNITY */}
+      <section id="community" className="community-section section-black">
+        <SectionHeading
+          dark
+          eyebrow="06 / COMMUNITY"
+          title="CODE TOGETHER, GROW TOGETHER."
+        />
+        <p className="section-subtext">
+          Collaborate with fellow members, share approaches, and learn from
+          every submission — not just your own.
+        </p>
+        <CommunitySection />
+      </section>
+
+      {/* 8. TOOLS / PLATFORMS */}
+      <section id="tools" className="tools-section section-black">
+        <SectionHeading dark eyebrow="07 / PRACTICE GROUNDS" title="BUILT THROUGH ALGORITHMS." />
+        <ToolsStrip />
+      </section>
+
+      {/* 9. CALL TO ACTION */}
+      <section className="dev-cta-section section-orange">
+        <div className="dev-cta-content">
+          <div className="eyebrow">THINK &amp; SOLVE</div>
+          <h2>READY TO THINK DIFFERENTLY?</h2>
+          <p>Turn abstract logic into real, elegant code.</p>
+          <Link to="/join" className="circle-link">
+            JOIN THE DSA WING <ArrowUpRight />
+          </Link>
+        </div>
+      </section>
+
+    </div>
+  );
 }

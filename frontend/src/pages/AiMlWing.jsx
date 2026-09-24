@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Code2, Sparkles, Terminal, ArrowUpRight, Cpu, Layers, GitMerge } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import SectionHeading from '../components/SectionHeading';
 import DevTerminal from '../components/dev/DevTerminal';
 import StackBento from '../components/dev/StackBento';
@@ -8,8 +8,8 @@ import DevRoadmap from '../components/dev/DevRoadmap';
 import ProjectShowcase from '../components/dev/ProjectShowcase';
 import useGsap from '../hooks/useGsap';
 
-export default function DsaWing({ data }) {
-  const ref = useGsap((g, ST, root) => {
+export default function AiMlWing() {
+  const ref = useGsap((g) => {
     g.from('.dev-hero-text > *', {
       y: 35,
       opacity: 0,

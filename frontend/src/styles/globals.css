@@ -833,17 +833,6 @@ a {
     mix-blend-mode: difference
 }
 
-.cursor-active {
-    width: 54px;
-    height: 54px;
-    display: grid;
-    place-items: center;
-    font: 8px 'DM Mono';
-    color: var(--cream);
-    border: 1px solid var(--orange);
-    background: transparent
-}
-
 .admin-login {
     min-height: 100vh;
     display: grid;

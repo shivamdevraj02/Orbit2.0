@@ -53,7 +53,11 @@ export default function Resources({ data }) {
 
             <span>{resource.date}</span>
 
-            <button>
+            <button
+              type="button"
+              onClick={() => resource.url && window.open(resource.url, '_blank', 'noopener,noreferrer')}
+              disabled={!resource.url}
+            >
               OPEN RESOURCE
               <ArrowUpRight />
             </button>

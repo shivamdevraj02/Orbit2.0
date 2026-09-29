@@ -8,7 +8,13 @@ import PageTransition from './components/PageTransition';
 import CultureBackdrop from './components/CultureBackdrop';
 import OpeningLoader from './components/OpeningLoader';
 
+import AiMlWing from './pages/AiMlWing';
 import DevelopmentWing from './pages/DevelopmentWing';
+import DsaWing from './pages/DSAWing';
+import RoboticsWing from './pages/RoboticsWing';
+import GraphicsWing from './pages/GraphicsWing';
+
+import WingPage from './pages/WingPage';
 
 import useSiteData from './hooks/useSiteData';
 import useLenis from './hooks/useLenis';
@@ -26,11 +32,7 @@ function Shell() {
   useLenis();
 
   return (
-    <>
-
-
-
-      <CultureBackdrop />
+    <>    
       <CustomCursor />
       <PageTransition />
       <OpeningLoader />
@@ -44,17 +46,16 @@ function Shell() {
           <Route path="/resources" element={<Resources data={data} />} />
           <Route path="/gallery" element={<Gallery data={data} />} />
           <Route path="/about" element={<About data={data} />} />
-          <Route path="/wings/dev" element={<DevelopmentWing data={data} />} />
 
-          <Route
-            path="/admin/login"
-            element={<AdminLogin />}
-          />
+          <Route path="/wings/aiml" element={<AiMlWing />} />
+          <Route path="/wings/development" element={<DevelopmentWing />} />
+          <Route path="/wings/dsa" element={<DsaWing />} />
+          <Route path="/wings/robotics" element={<RoboticsWing />} />
+          <Route path="/wings/graphics-design" element={<GraphicsWing />} />
+          <Route path="/wings/:slug" element={<WingPage />} />
 
-          <Route
-            path="/admin/*"
-            element={<Admin data={data} />}
-          />
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin/*" element={<Admin data={data} />} />
         </Routes>
       </main>
 

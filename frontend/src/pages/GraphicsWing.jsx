@@ -2,16 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import SectionHeading from '../components/SectionHeading';
-import DevTerminal from '../components/dev/DevTerminal';
-import StackBento from '../components/dev/StackBento';
-import DevRoadmap from '../components/dev/DevRoadmap';
+import GraphicsEcosystem from '../components/Graphics/GraphicsEcosystem';
 import useGsap from '../hooks/useGsap';
 
-export default function DevelopmentWing() {
+export default function GraphicsWing() {
   const ref = useGsap((g) => {
     g.from('.dev-hero-text > *', {
       y: 35,
-      opacity: 0, 
+      opacity: 0,
       stagger: 0.1,
       duration: 0.8,
       ease: 'power3.out'
@@ -47,7 +45,7 @@ export default function DevelopmentWing() {
           <div className="dev-hero-text">
             <div className="status-badge">
               <span className="pulsing-dot" />
-              <span>WING 02 // DEV_CORE</span>
+              <span>WING 05 // GRAPHICS DESIGN</span>
             </div>
             <h1>
               CRAFTING <br />
@@ -65,9 +63,7 @@ export default function DevelopmentWing() {
               </a>
             </div>
           </div>
-          <div className="dev-hero-terminal">
-            <DevTerminal />
-          </div>
+        
         </div>
       </section>
 
@@ -77,7 +73,8 @@ export default function DevelopmentWing() {
         <p className="section-subtext">
           Modern frameworks and infrastructure we build with on a daily basis.
         </p>
-        {/* <StackBento /> */}
+        <GraphicsEcosystem />
+
       </section>
 
       {/* 3. ROADMAP & CURRICULUM */}
@@ -86,12 +83,13 @@ export default function DevelopmentWing() {
         <p className="section-subtext-dark">
           From fundamental JavaScript and architecture to full-stack microservices and deployment.
         </p>
-        <DevRoadmap />
+      
       </section>
 
       {/* 4. FLAGSHIP BUILDS */}
       <section id="projects" className="projects-section section-black">
         <SectionHeading dark eyebrow="03 / BUILDS" title="SHIPPED PROJECTS & OPEN SOURCE." />
+     
       </section>
 
       {/* 5. CALL TO ACTION */}

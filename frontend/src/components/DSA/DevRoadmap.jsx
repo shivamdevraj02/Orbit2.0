@@ -2,24 +2,27 @@ import React from 'react';
 
 const levels = [
   { id: '01', color: '#FF5B2E', label: 'Foundation' },
-  { id: '02', color: '#2FBF71', label: 'Application Engineering' },
-  { id: '03', color: '#3E7BFA', label: 'Production Systems' },
-  { id: '04', color: '#B15BFF', label: 'Technical Leadership' },
+  { id: '02', color: '#2FBF71', label: 'Core Data Structures' },
+  { id: '03', color: '#3E7BFA', label: 'Algorithmic Thinking' },
+  { id: '04', color: '#B15BFF', label: 'Advanced Problem Solving' },
 ];
 
+// Each topic is tagged with the level (0-3) it belongs to, so its marker
+// picks up that level's color — ties the two-column list back to the
+// stepper on the left without repeating the level name on every row.
 const topics = [
-  { t: 'HTML, CSS & JavaScript', lvl: 0 },
-  { t: 'Git & Team Workflows', lvl: 0 },
-  { t: 'Testing Fundamentals', lvl: 0 },
-  { t: 'React & Component Design', lvl: 1 },
-  { t: 'APIs & Authentication', lvl: 1 },
-  { t: 'SQL & Data Modeling', lvl: 1 },
-  { t: 'Node.js Services', lvl: 2 },
-  { t: 'Caching & Queues', lvl: 2 },
-  { t: 'Observability & Reliability', lvl: 2 },
-  { t: 'Cloud Deployment', lvl: 3 },
-  { t: 'System Design', lvl: 3 },
-  { t: 'Architecture & Mentoring', lvl: 3 },
+  { t: 'Programming Fundamentals', lvl: 0 },
+  { t: 'Time & Space Complexity', lvl: 0 },
+  { t: 'Sorting Algorithms', lvl: 0 },
+  { t: 'Linked List', lvl: 1 },
+  { t: 'Stack & Queue', lvl: 1 },
+  { t: 'Two Pointers', lvl: 1 },
+  { t: 'Sliding Window', lvl: 2 },
+  { t: 'Trees & BST', lvl: 2 },
+  { t: 'Recursion & Backtracking', lvl: 2 },
+  { t: 'Graphs', lvl: 3 },
+  { t: 'Dynamic Programming', lvl: 3 },
+  { t: 'Greedy Algorithms', lvl: 3 },
 ];
 
 const columns = [topics.slice(0, 6), topics.slice(6, 12)];

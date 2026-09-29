@@ -5,6 +5,8 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
 import PageTransition from './components/PageTransition';
+import CultureBackdrop from './components/CultureBackdrop';
+import OpeningLoader from './components/OpeningLoader';
 
 import DevelopmentWing from './pages/DevelopmentWing';
 
@@ -28,8 +30,10 @@ function Shell() {
 
 
 
+      <CultureBackdrop />
       <CustomCursor />
       <PageTransition />
+      <OpeningLoader />
 
       <Navbar wings={data.wings} />
 

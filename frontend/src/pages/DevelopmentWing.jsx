@@ -5,7 +5,6 @@ import SectionHeading from '../components/SectionHeading';
 import DevTerminal from '../components/dev/DevTerminal';
 import StackBento from '../components/dev/StackBento';
 import DevRoadmap from '../components/dev/DevRoadmap';
-import ProjectShowcase from '../components/dev/ProjectShowcase';
 import useGsap from '../hooks/useGsap';
 
 export default function DevelopmentWing({ data }) {
@@ -258,6 +257,15 @@ export default function DevelopmentWing({ data }) {
         </div>
       </section>
 
+      {/* 2. TECH STACK BENTO */}
+      <section className="stack-section section-black">
+        <SectionHeading dark eyebrow="01 / ECOSYSTEM" title="PRODUCTION TECH STACK." />
+        <p className="section-subtext">
+          Modern frameworks and infrastructure we build with on a daily basis.
+        </p>
+        <StackBento />
+      </section>
+
       {/* 5. ROADMAP & CURRICULUM */}
       <section id="roadmap" className="roadmap-section section-cream">
         <SectionHeading eyebrow="02 / CURRICULUM" title="STRUCTURED LEARNING TRACKS." />
@@ -386,7 +394,6 @@ export default function DevelopmentWing({ data }) {
       {/* 6. FLAGSHIP BUILDS */}
       <section id="projects" className="projects-section section-black">
         <SectionHeading dark eyebrow="03 / BUILDS" title="SHIPPED PROJECTS & OPEN SOURCE." />
-        <ProjectShowcase />
       </section>
 
       {/* 5. CALL TO ACTION */}

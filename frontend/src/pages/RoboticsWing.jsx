@@ -1,15 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Code2, Sparkles, Terminal, ArrowUpRight, Cpu, Layers, GitMerge } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import SectionHeading from '../components/SectionHeading';
-import DevTerminal from '../components/dev/DevTerminal';
-import StackBento from '../components/dev/StackBento';
-import DevRoadmap from '../components/dev/DevRoadmap';
-import ProjectShowcase from '../components/dev/ProjectShowcase';
+import RoboticsEcosystem from '../components/Robotics/RoboticsEcosystem';
 import useGsap from '../hooks/useGsap';
 
-export default function RoboticsWing({ data }) {
-  const ref = useGsap((g, ST, root) => {
+export default function RoboticsWing() {
+  const ref = useGsap((g) => {
     g.from('.dev-hero-text > *', {
       y: 35,
       opacity: 0,
@@ -78,9 +75,7 @@ return (
 
         </div>
 
-        <div className="dev-hero-terminal">
-          <DevTerminal />
-        </div>
+      
 
       </div>
     </section>
@@ -100,8 +95,7 @@ return (
         microcontrollers and sensors to robotic operating systems,
         computer vision, and autonomous navigation.
       </p>
-
-      <StackBento />
+      <RoboticsEcosystem />
 
     </section>
 
@@ -120,7 +114,7 @@ return (
         computer vision, and autonomous robots.
       </p>
 
-      <DevRoadmap />
+   
 
     </section>
 
@@ -140,7 +134,7 @@ return (
         perception, and autonomous decision-making.
       </p>
 
-      <ProjectShowcase />
+    
 
     </section>
 

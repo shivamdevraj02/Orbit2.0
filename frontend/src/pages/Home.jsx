@@ -4,7 +4,7 @@ import { ArrowDownRight, ArrowUpRight } from 'lucide-react';
 import useGsap from '../hooks/useGsap';
 import SectionHeading from '../components/SectionHeading';
 import MagneticButton from '../components/MagneticButton';
-import ThreeHero from '../components/ThreeHero';
+import CodingVisual from '../components/CodingVisual';
 import {
   pageEnter,
   parallax,
@@ -42,7 +42,7 @@ export default function Home({ data }) {
       <section className="hero">
         <div className="hero-grid" />
 
-        <ThreeHero />
+        <CodingVisual />
 
         <div className="hero-copy">
           <p className="eyebrow">

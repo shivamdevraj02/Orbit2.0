@@ -1,15 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Code2, Sparkles, Terminal, ArrowUpRight, Cpu, Layers, GitMerge } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import SectionHeading from '../components/SectionHeading';
-import DevTerminal from '../components/dev/DevTerminal';
-import StackBento from '../components/dev/StackBento';
-import DevRoadmap from '../components/dev/DevRoadmap';
-import ProjectShowcase from '../components/dev/ProjectShowcase';
+import GraphicsEcosystem from '../components/Graphics/GraphicsEcosystem';
 import useGsap from '../hooks/useGsap';
 
-export default function GraphicsWing({ data }) {
-  const ref = useGsap((g, ST, root) => {
+export default function GraphicsWing() {
+  const ref = useGsap((g) => {
     g.from('.dev-hero-text > *', {
       y: 35,
       opacity: 0,
@@ -66,9 +63,7 @@ export default function GraphicsWing({ data }) {
               </a>
             </div>
           </div>
-          <div className="dev-hero-terminal">
-            <DevTerminal />
-          </div>
+        
         </div>
       </section>
 
@@ -78,7 +73,8 @@ export default function GraphicsWing({ data }) {
         <p className="section-subtext">
           Modern frameworks and infrastructure we build with on a daily basis.
         </p>
-        <StackBento />
+        <GraphicsEcosystem />
+
       </section>
 
       {/* 3. ROADMAP & CURRICULUM */}
@@ -87,13 +83,13 @@ export default function GraphicsWing({ data }) {
         <p className="section-subtext-dark">
           From fundamental JavaScript and architecture to full-stack microservices and deployment.
         </p>
-        <DevRoadmap />
+      
       </section>
 
       {/* 4. FLAGSHIP BUILDS */}
       <section id="projects" className="projects-section section-black">
         <SectionHeading dark eyebrow="03 / BUILDS" title="SHIPPED PROJECTS & OPEN SOURCE." />
-        <ProjectShowcase />
+     
       </section>
 
       {/* 5. CALL TO ACTION */}

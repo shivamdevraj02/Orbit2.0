@@ -1,15 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Code2, Sparkles, Terminal, ArrowUpRight, Cpu, Layers, GitMerge } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import SectionHeading from '../components/SectionHeading';
-import DevTerminal from '../components/dev/DevTerminal';
-import StackBento from '../components/dev/StackBento';
-import DevRoadmap from '../components/dev/DevRoadmap';
-import ProjectShowcase from '../components/dev/ProjectShowcase';
+import AiMlEcosystem from '../components/AiMl/AiMlEcosystem';
 import useGsap from '../hooks/useGsap';
 
-export default function DsaWing({ data }) {
-  const ref = useGsap((g, ST, root) => {
+export default function AiMlWing() {
+  const ref = useGsap((g) => {
     g.from('.dev-hero-text > *', {
       y: 35,
       opacity: 0,
@@ -39,138 +36,137 @@ export default function DsaWing({ data }) {
     });
   }, []);
 
-return (
-  <div ref={ref} className="dev-wing-page">
+  return (
+    <div ref={ref} className="dev-wing-page">
 
-    {/* 1. HERO SECTION */}
-    <section className="dev-hero section-black">
-      <div className="dev-hero-grid" />
+      {/* 1. HERO SECTION */}
+      <section className="dev-hero section-black">
+        <div className="dev-hero-grid" />
 
-      <div className="dev-hero-container">
+        <div className="dev-hero-container">
 
-        <div className="dev-hero-text">
+          <div className="dev-hero-text">
 
-          <div className="status-badge">
-            <span className="pulsing-dot" />
-            <span>WING 01 // AI & ML</span>
+            <div className="status-badge">
+              <span className="pulsing-dot" />
+              <span>WING 01 // AI & ML</span>
+            </div>
+
+            <h1>
+              BUILDING <br />
+              <span className="accent-text">INTELLIGENT SYSTEMS.</span>
+            </h1>
+
+            <p className="dev-lead">
+              Explore artificial intelligence and machine learning through
+              data, predictive models, deep learning, and real-world
+              intelligent applications.
+            </p>
+
+            <div className="dev-hero-actions">
+              <a href="#topics" className="magnetic-btn">
+                EXPLORE AI/ML <ArrowUpRight size={16} />
+              </a>
+
+              <a href="#roadmap" className="ghost-btn">
+                LEARNING ROADMAP
+              </a>
+            </div>
+
           </div>
 
-          <h1>
-            BUILDING <br />
-            <span className="accent-text">INTELLIGENT SYSTEMS.</span>
-          </h1>
+          <div className="dev-hero-terminal">
 
-          <p className="dev-lead">
-            Explore artificial intelligence and machine learning through
-            data, predictive models, deep learning, and real-world
-            intelligent applications.
-          </p>
-
-          <div className="dev-hero-actions">
-            <a href="#topics" className="magnetic-btn">
-              EXPLORE AI/ML <ArrowUpRight size={16} />
-            </a>
-
-            <a href="#roadmap" className="ghost-btn">
-              LEARNING ROADMAP
-            </a>
           </div>
 
         </div>
-
-        <div className="dev-hero-terminal">
-          <DevTerminal />
-        </div>
-
-      </div>
-    </section>
+      </section>
 
 
-    {/* 2. AI/ML ECOSYSTEM */}
-    <section id="topics" className="stack-section section-black">
+      {/* 2. AI/ML ECOSYSTEM */}
+      <section id="topics" className="stack-section section-black">
 
-      <SectionHeading
-        dark
-        eyebrow="01 / ECOSYSTEM"
-        title="AI, MACHINE LEARNING & DATA."
-      />
+        <SectionHeading
+          dark
+          eyebrow="01 / ECOSYSTEM"
+          title="AI, MACHINE LEARNING & DATA."
+        />
 
-      <p className="section-subtext">
-        Learn the technologies and concepts behind intelligent systems,
-        from data preprocessing and classical machine learning to
-        deep learning and generative AI.
-      </p>
+        <p className="section-subtext">
+          Learn the technologies and concepts behind intelligent systems,
+          from data preprocessing and classical machine learning to
+          deep learning and generative AI.
+        </p>
+        <AiMlEcosystem />
 
-      <StackBento />
-
-    </section>
-
-
-    {/* 3. AI/ML ROADMAP */}
-    <section id="roadmap" className="roadmap-section section-cream">
-
-      <SectionHeading
-        eyebrow="02 / CURRICULUM"
-        title="STRUCTURED AI/ML ROADMAP."
-      />
-
-      <p className="section-subtext-dark">
-        Progress from mathematics and Python fundamentals to machine
-        learning, deep learning, NLP, computer vision, and modern
-        generative AI systems.
-      </p>
-
-      <DevRoadmap />
-
-    </section>
+      </section>
 
 
-    {/* 4. AI PROJECTS */}
-    <section id="projects" className="projects-section section-black">
+      {/* 3. AI/ML ROADMAP */}
+      <section id="roadmap" className="roadmap-section section-cream">
 
-      <SectionHeading
-        dark
-        eyebrow="03 / AI BUILDS"
-        title="INTELLIGENT PROJECTS & EXPERIMENTS."
-      />
+        <SectionHeading
+          eyebrow="02 / CURRICULUM"
+          title="STRUCTURED AI/ML ROADMAP."
+        />
 
-      <p className="section-subtext">
-        Build practical AI systems that transform data into predictions,
-        recommendations, automation, and intelligent user experiences.
-      </p>
-
-      <ProjectShowcase />
-
-    </section>
-
-
-    {/* 5. CALL TO ACTION */}
-    <section className="dev-cta-section section-orange">
-
-      <div className="dev-cta-content">
-
-        <div className="eyebrow">
-          LEARN & BUILD
-        </div>
-
-        <h2>
-          READY TO BUILD INTELLIGENT SYSTEMS?
-        </h2>
-
-        <p>
-          Learn the fundamentals, experiment with models, build AI
-          applications, and turn ideas into intelligent products.
+        <p className="section-subtext-dark">
+          Progress from mathematics and Python fundamentals to machine
+          learning, deep learning, NLP, computer vision, and modern
+          generative AI systems.
         </p>
 
-        <Link to="/about" className="circle-link">
-          START BUILDING <ArrowUpRight />
-        </Link>
 
-      </div>
 
-    </section>
+      </section>
 
-  </div>
-);
+
+      {/* 4. AI PROJECTS */}
+      <section id="projects" className="projects-section section-black">
+
+        <SectionHeading
+          dark
+          eyebrow="03 / AI BUILDS"
+          title="INTELLIGENT PROJECTS & EXPERIMENTS."
+        />
+
+        <p className="section-subtext">
+          Build practical AI systems that transform data into predictions,
+          recommendations, automation, and intelligent user experiences.
+        </p>
+
+
+
+      </section>
+
+
+      {/* 5. CALL TO ACTION */}
+      <section className="dev-cta-section section-orange">
+
+        <div className="dev-cta-content">
+
+          <div className="eyebrow">
+            LEARN & BUILD
+          </div>
+
+          <h2>
+            READY TO BUILD INTELLIGENT SYSTEMS?
+          </h2>
+
+          <p>
+            Learn the fundamentals, experiment with models, build AI
+            applications, and turn ideas into intelligent products.
+          </p>
+
+          <Link to="/about" className="circle-link">
+            START BUILDING <ArrowUpRight />
+          </Link>
+
+        </div>
+
+      </section>
+
+    </div>
+  );
 
 }

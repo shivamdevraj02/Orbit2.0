@@ -69,7 +69,7 @@ export default function DsaWing() {
   }, []);
 
   return (
-    <div ref={ref} className="dev-wing-page">
+    <div ref={ref} className="dev-wing-page dsa-wing-page">
 
       {/* 1. HERO SECTION */}
       <section className="dev-hero section-black">

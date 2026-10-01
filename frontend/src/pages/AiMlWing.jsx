@@ -52,10 +52,10 @@ export default function AiMlWing() {
               <span>WING 01 // AI & ML</span>
             </div>
 
-            <h1>
+            <h3>
               BUILDING <br />
               <span className="accent-text">INTELLIGENT SYSTEMS.</span>
-            </h1>
+            </h3>
 
             <p className="dev-lead">
               Explore artificial intelligence and machine learning through
@@ -89,7 +89,7 @@ export default function AiMlWing() {
         <SectionHeading
           dark
           eyebrow="01 / ECOSYSTEM"
-          title="AI, MACHINE LEARNING & DATA."
+          title=" AI & MACHINE LEARNING"
         />
 
         <p className="section-subtext">

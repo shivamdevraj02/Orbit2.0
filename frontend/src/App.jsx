@@ -1,31 +1,32 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import CustomCursor from './components/CustomCursor';
-import PageTransition from './components/PageTransition';
-import CultureBackdrop from './components/CultureBackdrop';
-import OpeningLoader from './components/OpeningLoader';
+import Navbar from './components/shared/Navbar';
+import Footer from './components/shared/Footer';
+import CustomCursor from './components/shared/CustomCursor';
+import PageTransition from './components/shared/PageTransition';
+import OpeningLoader from './components/shared/OpeningLoader';
 
-import AiMlWing from './pages/AiMlWing';
-import DevelopmentWing from './pages/DevelopmentWing';
-import DsaWing from './pages/DSAWing';
-import RoboticsWing from './pages/RoboticsWing';
-import GraphicsWing from './pages/GraphicsWing';
+import AIWing from './pages/wings/AIWing';
+import DevelopmentWing from './pages/wings/DevelopmentWing';
+import DsaWing from './pages/wings/DSAWing';
+import RoboticsWing from './pages/wings/RoboticsWing';
+import GraphicsWing from './pages/wings/GraphicsWing';
 
-import WingPage from './pages/WingPage';
+import WingPage from './pages/wings/WingPage';
 
 import useSiteData from './hooks/useSiteData';
 import useLenis from './hooks/useLenis';
 
-import Home from './pages/Home';
-import Wings from './pages/Wings';
-import Resources from './pages/Resources';
-import Gallery from './pages/Gallery';
-import About from './pages/About';
-import AdminLogin from './pages/AdminLogin';
-import Admin from './pages/Admin';
+import Home from './pages/site/Home';
+import Wings from './pages/wings/Wings';
+import Resources from './pages/site/Resources';
+import Gallery from './pages/site/Gallery';
+import About from './pages/site/About';
+import AdminLogin from './pages/admin/AdminLogin';
+import Admin from './pages/admin/Admin';
+import StudentLogin from './pages/student/StudentLogin';
+import StudentRegister from './pages/student/StudentRegister';
 
 function Shell() {
   const data = useSiteData();
@@ -47,13 +48,15 @@ function Shell() {
           <Route path="/gallery" element={<Gallery data={data} />} />
           <Route path="/about" element={<About data={data} />} />
 
-          <Route path="/wings/aiml" element={<AiMlWing />} />
+          <Route path="/wings/aiml" element={<AIWing />} />
           <Route path="/wings/development" element={<DevelopmentWing />} />
           <Route path="/wings/dsa" element={<DsaWing />} />
           <Route path="/wings/robotics" element={<RoboticsWing />} />
           <Route path="/wings/graphics-design" element={<GraphicsWing />} />
           <Route path="/wings/:slug" element={<WingPage />} />
 
+          <Route path="/student/login" element={<StudentLogin />} />
+          <Route path="/student/register" element={<StudentRegister />} />
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/*" element={<Admin data={data} />} />
         </Routes>

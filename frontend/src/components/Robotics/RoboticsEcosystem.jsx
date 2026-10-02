@@ -1,25 +1,50 @@
-import React from 'react';
-import { Bot, CircuitBoard, Cpu, Eye, Radio, Route } from 'lucide-react';
+import React, { useState } from 'react';
+import { Activity, Gauge, RotateCw } from 'lucide-react';
 
-const topics = [
-    { icon: CircuitBoard, title: 'Electronics & Hardware', desc: 'Wire power, motors, microcontrollers, and actuators into dependable robotic platforms.' },
-    { icon: Cpu, title: 'Embedded Systems', desc: 'Program real-time devices with efficient firmware, communication protocols, and robust states.' },
-    { icon: Radio, title: 'Sensors & Perception', desc: 'Collect useful signals from cameras, lidar, encoders, and the physical world.' },
-    { icon: Route, title: 'Control Systems', desc: 'Use feedback, calibration, and motion planning to make machines move precisely.' },
-    { icon: Eye, title: 'Computer Vision', desc: 'Help robots understand objects, distance, motion, and changing environments.' },
-    { icon: Bot, title: 'Autonomous Robotics', desc: 'Combine navigation, planning, and decision-making into intelligent robot behaviors.' },
-];
+export default function MotionBench() {
+  const [angle, setAngle] = useState(38);
+  const [power, setPower] = useState(64);
 
-export default function RoboticsEcosystem() {
-    return (
-        <div className="stack-bento">
-            {topics.map(({ icon: Icon, title, desc }) => (
-                <article className="bento-card" key={title}>
-                    <div className="bento-icon"><Icon size={18} /></div>
-                    <h3>{title}</h3>
-                    <p>{desc}</p>
-                </article>
-            ))}
+  return (
+    <section className="motion-bench" aria-label="Robotics motion sandbox">
+      <header className="motion-bench__header">
+        <div><span className="motion-bench__icon"><Activity size={16} /></span><strong>ROBOTICS / MOTION LAB</strong></div>
+        <span className="motion-bench__mode"><i /> SIMULATION</span>
+      </header>
+
+      <div className="motion-bench__layout">
+        <div className="motion-bench__scene" style={{ '--arm-angle': `${angle - 90}deg`, '--motor-power': `${power}%` }}>
+          <div className="motion-bench__scene-top"><span>ARM / 01</span><span>3 AXIS · SERVO</span></div>
+          <div className="motion-bench__grid" />
+          <div className="motion-bench__arm" aria-hidden="true">
+            <span className="motion-bench__joint motion-bench__joint--base" />
+            <span className="motion-bench__segment motion-bench__segment--lower" />
+            <span className="motion-bench__joint motion-bench__joint--elbow" />
+            <span className="motion-bench__segment motion-bench__segment--upper" />
+            <span className="motion-bench__joint motion-bench__joint--wrist" />
+            <span className="motion-bench__gripper"><i /><b /></span>
+          </div>
+          <div className="motion-bench__axis motion-bench__axis--x">X</div>
+          <div className="motion-bench__axis motion-bench__axis--y">Y</div>
+          <div className="motion-bench__readout"><span>JOINT 02</span><strong>{angle}°</strong></div>
         </div>
-    );
+
+        <div className="motion-bench__controls">
+          <div className="motion-bench__controls-title"><div><span>CONTROL PANEL</span><h2>Adjust the motion.</h2></div><RotateCw size={17} /></div>
+          <label className="motion-bench__control" htmlFor="arm-angle">
+            <span><b>Elbow angle</b><output htmlFor="arm-angle">{angle}°</output></span>
+            <input id="arm-angle" max="150" min="20" onChange={(event) => setAngle(Number(event.target.value))} type="range" value={angle} />
+            <small><span>20°</span><span>150°</span></small>
+          </label>
+          <label className="motion-bench__control" htmlFor="motor-power">
+            <span><b>Motor output</b><output htmlFor="motor-power">{power}%</output></span>
+            <input id="motor-power" max="100" min="0" onChange={(event) => setPower(Number(event.target.value))} type="range" value={power} />
+            <small><span>0%</span><span>100%</span></small>
+          </label>
+          <div className="motion-bench__telemetry"><Gauge size={15} /><span>Drive output</span><b>{power > 80 ? 'HIGH' : power > 35 ? 'NOMINAL' : 'LOW'}</b></div>
+          <p className="motion-bench__note">Visual simulation only. No hardware is connected.</p>
+        </div>
+      </div>
+    </section>
+  );
 }

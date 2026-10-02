@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
-import SectionHeading from '../components/SectionHeading';
+import SectionHeading from '../components/shared/SectionHeading';
 import { getWingPath } from '../data/siteData';
 
 export default function WingsShowcase({ wings }) {

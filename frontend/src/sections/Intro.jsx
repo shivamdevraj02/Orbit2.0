@@ -1,5 +1,5 @@
 import React from 'react';
-import SectionHeading from '../components/SectionHeading';
+import SectionHeading from '../components/shared/SectionHeading';
 
 export default function Intro({ data }) {
   return (

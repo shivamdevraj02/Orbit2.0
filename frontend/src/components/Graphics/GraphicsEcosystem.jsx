@@ -1,25 +1,92 @@
-import React from 'react';
-import { Box, Layers3, Monitor, Palette, PenTool, Sparkles } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowDownRight, Check, Crop, Layers3, Type } from 'lucide-react';
 
-const topics = [
-    { icon: Palette, title: 'Visual Design', desc: 'Build strong visual systems through composition, color, typography, and clear creative direction.' },
-    { icon: PenTool, title: 'Illustration & Branding', desc: 'Create expressive identities, icons, and artwork that give ideas a recognizable visual language.' },
-    { icon: Layers3, title: 'UI & Experience', desc: 'Shape polished interfaces with thoughtful layouts, interaction patterns, and accessible design.' },
-    { icon: Box, title: '3D & Spatial Art', desc: 'Explore modeling, materials, lighting, and composition for immersive three-dimensional work.' },
-    { icon: Sparkles, title: 'Motion Graphics', desc: 'Use timing, transitions, and visual rhythm to make stories and interfaces feel alive.' },
-    { icon: Monitor, title: 'Interactive Media', desc: 'Combine code and creativity to create responsive installations, websites, and digital experiences.' },
+const palettes = [
+	{ name: 'Signal', colors: ['#f15a24', '#f4efe7', '#10110f'] },
+	{ name: 'Field', colors: ['#a7c957', '#edf1dc', '#263329'] },
+	{ name: 'Studio', colors: ['#f2b7d5', '#fff0e5', '#382b47'] },
 ];
 
-export default function GraphicsEcosystem() {
-    return (
-        <div className="stack-bento">
-            {topics.map(({ icon: Icon, title, desc }) => (
-                <article className="bento-card" key={title}>
-                    <div className="bento-icon"><Icon size={18} /></div>
-                    <h3>{title}</h3>
-                    <p>{desc}</p>
-                </article>
-            ))}
-        </div>
-    );
+export default function DesignWorkbench() {
+	const [activePalette, setActivePalette] = useState(0);
+	const palette = palettes[activePalette];
+
+	return (
+		<section className="design-workbench" aria-label="Visual design workbench">
+			<header className="design-workbench__bar">
+				<div>
+					<span className="design-workbench__file-mark"><Layers3 size={15} /></span>
+					<strong>orbit_identity / artboard</strong>
+				</div>
+				<span className="design-workbench__status"><i /> ALL CHANGES SAVED</span>
+			</header>
+
+			<div className="design-workbench__layout">
+				<aside className="design-workbench__tools" aria-label="Design tools">
+					<button type="button" aria-label="Select tool"><Crop size={17} /></button>
+					<button type="button" aria-label="Typography tool"><Type size={17} /></button>
+					<button type="button" aria-label="Layers panel"><Layers3 size={17} /></button>
+				</aside>
+
+				<div className="design-workbench__canvas-wrap">
+					<div
+						className="design-workbench__canvas"
+						style={{
+							'--palette-accent': palette.colors[0],
+							'--palette-paper': palette.colors[1],
+							'--palette-ink': palette.colors[2],
+						}}
+					>
+						<div className="design-workbench__canvas-meta">
+							<span>ORBIT / COMMUNITY</span>
+							<span>VISUAL IDENTITY · 2026</span>
+						</div>
+						<div className="design-workbench__art">
+							<img src="/images/pic1.jpeg" alt="Orbit community at a campus event" />
+							<div className="design-workbench__art-copy">
+								<span>MAKE ROOM</span>
+								<strong>FOR<br />IDEAS.</strong>
+								<small>LEARN / MAKE / SHARE</small>
+							</div>
+							<span className="design-workbench__art-index">01—03</span>
+						</div>
+						<div className="design-workbench__canvas-foot">
+							<span>FIG. 01 — COMMUNITY CAMPAIGN</span>
+							<ArrowDownRight size={16} />
+						</div>
+					</div>
+				</div>
+
+				<aside className="design-workbench__inspector">
+					<span className="design-workbench__label">COLOR SYSTEM</span>
+					<h3>Choose a palette</h3>
+					<div className="design-workbench__palettes">
+						{palettes.map((option, index) => (
+							<button
+								aria-label={`${option.name} palette`}
+								aria-pressed={index === activePalette}
+								className={index === activePalette ? 'is-active' : ''}
+								key={option.name}
+								onClick={() => setActivePalette(index)}
+								type="button"
+							>
+								<span className="design-workbench__swatches">
+									{option.colors.map((color) => (
+										<i key={color} style={{ backgroundColor: color }} />
+									))}
+								</span>
+								<span>{option.name}</span>
+								{index === activePalette && <Check size={14} />}
+							</button>
+						))}
+					</div>
+					<div className="design-workbench__inspector-rule" />
+					<span className="design-workbench__label">LAYERS</span>
+					<p><i /> Display / headline</p>
+					<p><i /> Event photography</p>
+					<p><i /> Caption / metadata</p>
+				</aside>
+			</div>
+		</section>
+	);
 }

@@ -1,8 +1,8 @@
 import React from 'react';
-import DevTerminal from '../components/dev/DevTerminal';
-import StackBento from '../components/dev/StackBento';
-import DevRoadmap from '../components/dev/DevRoadmap';
-import ProjectShowcase from '../components/dev/ProjectShowcase';
+import DevTerminal from '../components/development/DevTerminal';
+import StackBento from '../components/development/StackBento';
+import DevRoadmap from '../components/development/DevRoadmap';
+import ProjectShowcase from '../components/development/ProjectShowcase';
 
 export const wingCatalog = {
   dev: {

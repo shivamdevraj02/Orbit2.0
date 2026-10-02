@@ -1,6 +1,6 @@
 import React from 'react';
 import { MapPin, Phone, Mail, ArrowUpRight } from 'lucide-react';
-import SectionHeading from '../components/SectionHeading';
+import SectionHeading from '../components/shared/SectionHeading';
 
 export default function AboutSection({ data }) {
   return (

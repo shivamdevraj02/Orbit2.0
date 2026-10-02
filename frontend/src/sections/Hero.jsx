@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowDownRight, ArrowUpRight } from 'lucide-react';
-import MagneticButton from '../components/MagneticButton';
-import ThreeHero from '../components/ThreeHero';
+import MagneticButton from '../components/shared/MagneticButton';
+import ThreeHero from '../components/shared/ThreeHero';
 
 export default function Hero({ data }) {
   const scrollToWings = () => {

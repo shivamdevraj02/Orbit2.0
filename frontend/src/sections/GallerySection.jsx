@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ArrowUpRight, X } from 'lucide-react';
-import SectionHeading from '../components/SectionHeading';
+import SectionHeading from '../components/shared/SectionHeading';
 
 const CATEGORIES = ['ALL', 'EVENTS', 'WORKSHOPS', 'PROJECTS', 'TEAM', 'DESIGN'];
 
